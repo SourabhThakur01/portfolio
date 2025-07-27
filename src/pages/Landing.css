@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #1c1c1c;
+  color: #fff;
+}
+
+.page-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* === HERO SECTION === */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.hero-left {
+  flex: 1;
+  text-align: center;
+}
+
+.hero-image {
+  width: 300px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.hero-name-card .first-name {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.hero-name-card .last-name {
+  font-size: 1.5rem;
+  color: #ff4d4d;
+}
+
+.job-title {
+  font-size: 1rem;
+  color: #7cc4ff;
+  margin-top: 8px;
+}
+
+.hero-right {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-right h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #ff4d4d;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ddd;
+  margin-bottom: 30px;
+}
+
+.hire-button {
+  background-color: #ef4444;
+  color: white;
+  font-size: 1rem;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.hire-button:hover {
+  background-color: #b91c1c;
+}
+
+/* === UNIVERSAL SECTIONS === */
+.section {
+  margin-bottom: 80px;
+}
+
+.section h2 {
+  font-size: 2rem;
+  color: #ff4d4d;
+  margin-bottom: 20px;
+}
+
+.section p,
+.section ul {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ddd;
+}
+
+.goals-list li {
+  margin-bottom: 10px;
+}
+
+/* === SKILLS SECTION === */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.skills-grid span {
+  background-color: #2a2a2a;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  border: 1px solid #444;
+}
+
+/* === FOOTER === */
+.footer {
+  margin-top: 80px;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #333;
+  color: #999;
+  font-size: 0.9rem;
+}
