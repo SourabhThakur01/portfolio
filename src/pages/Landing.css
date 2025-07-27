@@ -10,6 +10,7 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #1c1c1c;
   color: #fff;
+  margin-top: 120px;
 }
 
 .page-container {
@@ -95,7 +96,7 @@ body {
   background-color: #b91c1c;
 }
 
-/* === UNIVERSAL SECTIONS === */
+/* === SECTION UNIVERSAL === */
 .section {
   margin-bottom: 80px;
 }
@@ -113,16 +114,38 @@ body {
   color: #ddd;
 }
 
-.goals-list li {
-  margin-bottom: 10px;
+/* === GOALS + SKILLS SIDE BY SIDE === */
+.dual-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-/* === SKILLS SECTION === */
+.goals-box,
+.skills-box {
+  flex: 1;
+  min-width: 300px;
+}
+
+.goals-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.goals-list li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #ccc;
+}
+
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .skills-grid span {
@@ -141,4 +164,31 @@ body {
   border-top: 1px solid #333;
   color: #999;
   font-size: 0.9rem;
+}
+
+/* === FADE-IN ANIMATIONS === */
+.fade-section {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.fade-delay-1 {
+  animation-delay: 0.2s;
+}
+.fade-delay-2 {
+  animation-delay: 0.6s;
+}
+.fade-delay-3 {
+  animation-delay: 1s;
+}
+.fade-delay-4 {
+  animation-delay: 1.4s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
