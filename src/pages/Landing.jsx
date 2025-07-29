@@ -85,19 +85,19 @@ const Landing = () => {
           {/* === HERO SECTION === */}
           <section id="home" className="hero fade-section fade-delay-1">
             <div className="hero-left">
-              <img src="src/assets/sourabh.png" alt="Sourabh" className="hero-image" />
+              <img src="src/assets/sourabh.jpg" alt="Sourabh" className="hero-image" />
               <div className="hero-name-card">
                 <h2 className="first-name">Sourabh</h2>
                 <h2 className="last-name">Thakur</h2>
-                <p className="job-title">Junior Web Developer</p>
+                <p className="job-title"></p>
               </div>
             </div>
 
             <div className="hero-right">
               <h1>
-                Hi, I’m <span className="highlight">Sourabh<br />Thakur</span>
+                Hi, I’m <span className="highlight">Junior<br />Web Developer</span>
               </h1>
-              <h3 className="job-title">Junior Web Developer</h3>
+              <h3 className="job-title"> </h3>
               <p className="hero-description">
                 I’m a passionate junior developer who loves building clean,
                 responsive web apps using React. I aim to deliver real-world

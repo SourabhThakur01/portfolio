@@ -58,13 +58,16 @@ body {
 .hero-left { flex: 1; text-align: center; }
 .hero-image {
   width: 300px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(255, 0, 0, 0.1);
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 60px rgba(255, 0, 0, 0.1);
   margin-bottom: 20px;
+  border-color: #ddd;
+  border-width: 2px;
 }
-.hero-name-card .first-name { font-size: 1.5rem; color: #fff; }
-.hero-name-card .last-name { font-size: 1.5rem; color: #ff4d4d; }
+.hero-name-card .first-name { font-size: 2.5rem; color: #fff; }
+.hero-name-card .last-name { font-size: 2.5rem; color: #ff4d4d; }
 .job-title { font-size: 1rem; color: #7cc4ff; margin-top: 8px; }
 .hero-right { flex: 1; max-width: 600px; }
 .hero-right h1 {
