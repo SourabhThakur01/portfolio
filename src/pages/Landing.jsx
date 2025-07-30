@@ -125,7 +125,7 @@ const Landing = () => {
           {/* === HERO SECTION === */}
           <section id="home" className="hero fade-section fade-delay-1">
             <div className="hero-left">
-              <img src="src/assets/sourabh.jpg" alt="Sourabh" className="hero-image" />
+              <img src="/sourabh.jpg" alt="Sourabh" className="hero-image" />
               <div className="hero-name-card">
                 <h2 className="first-name">Sourabh</h2>
                 <h2 className="last-name">Thakur</h2>
@@ -149,7 +149,7 @@ const Landing = () => {
                   <FaLinkedin className="icon" />
                 </a>
                 <a
-                  href="src/assets/Sourabh_Thakur_01.pdf"
+                  href="/Sourabh_Thakur_01.pdf"
                   download="Sourabh_Thakur_Resume.pdf"
                   title="Download Resume"
                 >
