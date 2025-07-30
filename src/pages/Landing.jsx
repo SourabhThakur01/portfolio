@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, FaFileDownload } from "react-icons/fa";
 import "./Landing.css";
 
 const projects = [
@@ -71,6 +71,20 @@ const Landing = () => {
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   };
 
+  const handleMailTo = (e) => {
+  e.preventDefault();
+
+  const name = e.target.name.value;
+  const email = e.target.email.value;
+  const message = e.target.message.value;
+
+  const subject = encodeURIComponent("New message from portfolio");
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+
+  window.location.href = `mailto:thakursourav250@gmail.com?subject=${subject}&body=${body}`;
+};
+
+
   const trackTranslate = {
     transform: `translateX(-${(currentIndex * 100) / projectsPerView}%)`,
   };
@@ -119,8 +133,16 @@ const Landing = () => {
                 <a href="https://www.linkedin.com/in/sourabh-thakur2530/" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin className="icon" />
                 </a>
+                <a
+                  href="src/assets/Sourabh_Thakur_01.pdf"
+                  download="Sourabh_Thakur_Resume.pdf"
+                  title="Download Resume"
+                >
+                  <FaFileDownload className="icon" />
+                </a>
                 <span className="hire-text">Hire me and check my full potential!</span>
               </div>
+
             </div>
           </section>
 
@@ -128,23 +150,16 @@ const Landing = () => {
           <section id="about" className="section fade-section fade-delay-2">
             <h2>About Me</h2>
             <p>
-              I'm a dedicated and enthusiastic junior software developer based in Calgary. After completing
-              my diploma in Software Development, I immersed myself in hands-on learning by building projects
-              that combine clean UI design with solid back-end functionality.
+              I’m a passionate and curious junior software developer currently based in Calgary. After completing my diploma in Software Development, I dove straight into building real-world projects that blend clean UI design with solid backend logic.
             </p>
             <p>
-              I enjoy solving real-world problems with code and have experience in HTML, CSS, JavaScript,
-              React, Node.js, and MySQL. I'm especially passionate about frontend development and responsive
-              design, ensuring a seamless experience across devices.
+              I love turning ideas into responsive, user-friendly web applications. My experience includes working with HTML, CSS, JavaScript, React, Node.js, and MySQL. I'm especially drawn to frontend development — crafting smooth, accessible interfaces that work beautifully across devices.
             </p>
             <p>
-              Apart from technical skills, I bring strong communication, team collaboration, and leadership
-              experience from my current role as a supervisor at Harvey’s. I believe in continuous learning,
-              attention to detail, and always staying curious about new technologies.
+              Outside of tech, I’ve gained strong teamwork and leadership experience as a supervisor at Harvey’s. That role taught me the value of clear communication, problem-solving on the go, and staying organized under pressure — all of which I now bring into my tech journey.
             </p>
             <p>
-              When I’m not coding, I enjoy exploring tech trends, reading about startups, and watching programming tutorials.
-              I’m currently focused on improving my React and Node.js skills, with the long-term goal of becoming a full-stack developer.
+              In my free time, you'll usually find me exploring new tech trends, watching dev tutorials, or working on my next side project. I’m currently focused on sharpening my React and Node.js skills, and my long-term goal is to grow into a confident full-stack developer.
             </p>
           </section>
 
@@ -153,26 +168,55 @@ const Landing = () => {
             <div id="goals" className="goals-box">
               <h2>My Software Goals</h2>
               <ul className="goals-list">
-                <li>✅ Build accessible, fast, and user-focused applications</li>
-                <li>📚 Keep improving my skills through real-world projects</li>
-                <li>🌐 Contribute to open-source projects</li>
-                <li>🧑‍💻 Become a Full Stack Developer</li>
+                <li>✅ Build clean, fast, and user-centered applications for real-world users</li>
+                <li>📚 Keep learning and growing by working on challenging, hands-on projects</li>
+                <li>🌐 Contribute to open-source communities and collaborate with other developers</li>
+                <li>🧑‍💻 Become a confident Full Stack Developer with strong frontend & backend skills</li>
               </ul>
             </div>
 
             <div id="skills" className="skills-box">
               <h2>Skills</h2>
               <div className="skills-grid">
+                {/* Programming Languages */}
+                <span>Python</span>
+                <span>JavaScript</span>
+                <span>C#</span>
+
+                {/* Web Development */}
                 <span>HTML</span>
                 <span>CSS</span>
-                <span>JavaScript</span>
-                <span>React</span>
                 <span>Tailwind</span>
-                <span>Git</span>
-                <span>MySQL</span>
+                <span>React</span>
                 <span>Node.js</span>
+
+                {/* Databases */}
+                <span>MySQL</span>
+                <span>MongoDB</span>
+                <span>Oracle</span>
+                <span>XML</span>
+                <span>Basic SQL</span>
+
+                {/* Tools & Platforms */}
+                <span>GitHub</span>
+                <span>Visual Studio</span>
+                <span>Figma</span>
+
+                {/* Concepts */}
+                <span>Responsive Design</span>
+                <span>UI/UX Basics</span>
+                <span>Agile</span>
+                <span>Scrum</span>
+
+                {/* Soft Skills */}
+                <span>Teamwork</span>
+                <span>Communication</span>
+                <span>Time Management</span>
+                <span>Problem Solving</span>
+                <span>Adaptability</span>
               </div>
             </div>
+
           </section>
 
           {/* === PROJECTS SECTION === */}
@@ -211,17 +255,20 @@ const Landing = () => {
                 I'm always open to connect!
               </p>
               <div className="contact-icons">
-                <a href="https://github.com/SourabhThakur01" target="_blank" rel="noopener noreferrer">🐱 GitHub</a>
-                <a href="https://www.linkedin.com/in/sourabh-thakur2530/" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">📷 Instagram</a>
+                <a href="https://github.com/SourabhThakur01" target="_blank" rel="noopener noreferrer" className="icon-link">
+                  <FaGithub />
+                </a>
+                <a href="https://www.linkedin.com/in/sourabh-thakur2530/" target="_blank" rel="noopener noreferrer" className="icon-link">
+                  <FaLinkedin />
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="icon-link">
+                  <FaInstagram />
+                </a>
               </div>
             </div>
 
-            <form
-              className="contact-right"
-              action="https://formspree.io/f/mnqeovpr"
-              method="POST"
-            >
+            <form className="contact-right" onSubmit={handleMailTo}>
+
               <input type="text" name="name" placeholder="Your Name" required />
               <input type="email" name="email" placeholder="Your Email" required />
               <textarea name="message" placeholder="Your Message" rows="5" required />

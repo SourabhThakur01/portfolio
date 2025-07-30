@@ -166,7 +166,7 @@ body {
   min-width: 300px;
 }
 .skills-box {
-  margin-top: 40px;
+  margin-top: 0
 }
 .goals-list {
   list-style: none;
@@ -339,20 +339,16 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background-color: #1f1f1f;
   padding: 8px 14px;
-  border-radius: 8px;
   color: #ff4d4d;
   text-decoration: none;
-  font-size: 0.95rem;
-  border: 1px solid transparent;
+  font-size: 1.8rem;
   transition: all 0.3s ease;
 }
 
 .contact-icons a:hover {
-  background-color: #ff4d4d;
   color: #fff;
-  border-color: #ff4d4d;
+  transform: scale(1.5);
 }
 
 .contact-right {
@@ -362,6 +358,8 @@ body {
   flex-direction: column;
   gap: 16px;
 }
+
+
 
 .contact-right input,
 .contact-right textarea {
