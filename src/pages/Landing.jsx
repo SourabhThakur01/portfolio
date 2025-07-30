@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaGithub, FaLinkedin, FaInstagram, FaFileDownload } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+  FaFileDownload,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
 import "./Landing.css";
 
 const projects = [
@@ -42,6 +49,7 @@ const projects = [
   },
 ];
 
+
 const Landing = () => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,6 +57,7 @@ const Landing = () => {
   const maxIndex = Math.max(0, projects.length - projectsPerView);
   const [isManual, setIsManual] = useState(false);
   const intervalRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!isManual) {
@@ -72,35 +81,41 @@ const Landing = () => {
   };
 
   const handleMailTo = (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
+    const subject = encodeURIComponent("New message from portfolio");
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:thakursourav250@gmail.com?subject=${subject}&body=${body}`;
+  };
 
-  const name = e.target.name.value;
-  const email = e.target.email.value;
-  const message = e.target.message.value;
-
-  const subject = encodeURIComponent("New message from portfolio");
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-
-  window.location.href = `mailto:thakursourav250@gmail.com?subject=${subject}&body=${body}`;
-};
-
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   const trackTranslate = {
     transform: `translateX(-${(currentIndex * 100) / projectsPerView}%)`,
   };
 
+
   return (
     <>
       {/* === NAVIGATION BAR === */}
       <nav className="navbar">
-        <div className="nav-left">Sourabh.dev</div>
-        <div className="nav-links">
-          <a href="#home">Home</a>
+        <div className="nav-left">Sourabh</div>
+        
+        <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <a href="#about">About</a>
-          <a href="#goals">Goals</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
+          <a href="#goals">Goals</a>
           <a href="#contact">Contact</a>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        </div>
+
+        <div className="menu-toggle" onClick={toggleMenu}>
+          {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
       </nav>
 
