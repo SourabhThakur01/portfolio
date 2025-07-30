@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import "./Landing.css";
@@ -44,25 +44,35 @@ const projects = [
 
 const Landing = () => {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(0);
-  const projectsPerPage = 2;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const projectsPerView = 2;
+  const maxIndex = Math.max(0, projects.length - projectsPerView);
+  const [isManual, setIsManual] = useState(false);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (!isManual) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+      }, 5000);
+    }
+    return () => clearInterval(intervalRef.current);
+  }, [isManual, maxIndex]);
 
   const handleNext = () => {
-    setCurrentPage((prev) => (prev + 1) % Math.ceil(projects.length / projectsPerPage));
+    clearInterval(intervalRef.current);
+    setIsManual(true);
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
   const handlePrev = () => {
-    setCurrentPage((prev) =>
-      prev === 0 ? Math.floor((projects.length - 1) / projectsPerPage) : prev - 1
-    );
+    clearInterval(intervalRef.current);
+    setIsManual(true);
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
   };
 
   const trackTranslate = {
-    transform: `translateX(-${currentPage * 100}%)`,
+    transform: `translateX(-${(currentIndex * 100) / projectsPerView}%)`,
   };
 
   return (
@@ -76,12 +86,13 @@ const Landing = () => {
           <a href="#goals">Goals</a>
           <a href="#skills">Skills</a>
           <a href="#projects">Projects</a>
-          <a href="#footer">Contact</a>
+          <a href="#contact">Contact</a>
         </div>
       </nav>
 
       <div className="page-container">
         <div className="content-wrapper">
+
           {/* === HERO SECTION === */}
           <section id="home" className="hero fade-section fade-delay-1">
             <div className="hero-left">
@@ -89,7 +100,6 @@ const Landing = () => {
               <div className="hero-name-card">
                 <h2 className="first-name">Sourabh</h2>
                 <h2 className="last-name">Thakur</h2>
-                <p className="job-title"></p>
               </div>
             </div>
 
@@ -97,7 +107,6 @@ const Landing = () => {
               <h1>
                 Hi, I’m <span className="highlight">Junior<br />Web Developer</span>
               </h1>
-              <h3 className="job-title"> </h3>
               <p className="hero-description">
                 I’m a passionate junior developer who loves building clean,
                 responsive web apps using React. I aim to deliver real-world
@@ -167,7 +176,7 @@ const Landing = () => {
           </section>
 
           {/* === PROJECTS SECTION === */}
-          <section id="projects" className="section projects-section fade-section fade-delay-5">
+          <section id="projects" className="section projects-section fade-section fade-delay-4">
             <h2>Projects</h2>
             <div className="project-slider-wrapper">
               <button className="side-button left" onClick={handlePrev}>‹</button>
@@ -188,13 +197,44 @@ const Landing = () => {
               <button className="side-button right" onClick={handleNext}>›</button>
             </div>
           </section>
-
-          {/* === FOOTER === */}
-          <footer id="footer" className="footer fade-section fade-delay-4">
-            <p>&copy; {new Date().getFullYear()} Sourabh Thakur. All rights reserved.</p>
-          </footer>
         </div>
       </div>
+
+        <div className="contact-footer-wrapper">
+          <div className="inner-container">
+          {/* === CONTACT SECTION === */}
+          <section id="contact" className="contact-section">
+            <div className="contact-left">
+              <h2>Let's Connect</h2>
+              <p>
+                Whether it's a project, opportunity, or just a chat —
+                I'm always open to connect!
+              </p>
+              <div className="contact-icons">
+                <a href="https://github.com/SourabhThakur01" target="_blank" rel="noopener noreferrer">🐱 GitHub</a>
+                <a href="https://www.linkedin.com/in/sourabh-thakur2530/" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">📷 Instagram</a>
+              </div>
+            </div>
+
+            <form
+              className="contact-right"
+              action="https://formspree.io/f/mnqeovpr"
+              method="POST"
+            >
+              <input type="text" name="name" placeholder="Your Name" required />
+              <input type="email" name="email" placeholder="Your Email" required />
+              <textarea name="message" placeholder="Your Message" rows="5" required />
+              <button type="submit">Send Message</button>
+            </form>
+          </section>
+
+          {/* === FOOTER === */}
+          <footer id="footer" className="footer fade-section fade-delay-5">
+            <p>&copy; {new Date().getFullYear()} Sourabh Thakur. All rights reserved.</p>
+          </footer>
+          </div>
+        </div>
     </>
   );
 };
