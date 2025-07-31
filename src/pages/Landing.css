@@ -482,13 +482,17 @@ body {
   .navbar {
     flex-direction: column;
     padding: 15px 20px;
-    justify-content: space-between;
   }
 
   .nav-links {
+    display: none;
     flex-direction: column;
     gap: 10px;
     margin-top: 10px;
+    text-align: center;
+  }
+  .nav-links.open {
+    display: flex;
   }
 
   .hero-left,
@@ -525,6 +529,9 @@ body {
     align-items: center;
     gap: 10px;
     margin-top: 10px;
+  }
+  .menu-toggle {
+    display: block;
   }
 }
 
