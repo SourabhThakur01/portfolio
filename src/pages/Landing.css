@@ -485,14 +485,9 @@ body {
   }
 
   .nav-links {
-    display: none;
     flex-direction: column;
     gap: 10px;
     margin-top: 10px;
-    text-align: center;
-  }
-  .nav-links.open {
-    display: flex;
   }
 
   .hero-left,
@@ -529,9 +524,6 @@ body {
     align-items: center;
     gap: 10px;
     margin-top: 10px;
-  }
-  .menu-toggle {
-    display: block;
   }
 }
 
@@ -579,7 +571,13 @@ body {
   .menu-toggle {
     display: block;
   }
-
+  
+  .navbar {
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+    padding: 15px 20px;
+  }
   .nav-links {
     position: absolute;
     top: 70px;

@@ -103,7 +103,7 @@ const Landing = () => {
     <>
       {/* === NAVIGATION BAR === */}
       <nav className="navbar">
-        <div className="nav-left">Sourabh</div>
+        <div className="nav-left">Sourabh.dev</div>
         
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <a href="#about">About</a>
@@ -111,13 +111,15 @@ const Landing = () => {
           <a href="#projects">Projects</a>
           <a href="#goals">Goals</a>
           <a href="#contact">Contact</a>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          <a href="/Sourabh_Thakur_01.pdf" download="Sourabh_Thakur_Resume.pdf"
+                  title="Download Resume"target="_blank" rel="noopener noreferrer">Resume</a>
         </div>
-
+        
         <div className="menu-toggle" onClick={toggleMenu}>
           {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
       </nav>
+
 
       <div className="page-container">
         <div className="content-wrapper">
