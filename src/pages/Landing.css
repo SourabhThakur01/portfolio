@@ -213,7 +213,7 @@ body {
 .projects-slider {
   width: 100%;
   overflow: hidden;
-  padding: 20px;
+  padding: 20px;  
 }
 .projects-track {
   display: flex;
@@ -458,12 +458,30 @@ body {
 
   .side-button.left,
   .side-button.right {
-    left: 5px !important;
-    right: 5px !important;
-    width: 40px;
-    height: 40px;
+    font-size: 2rem;
+    padding: 0px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 0px;
+    background: transparent;
+    border: 0px;
+    box-shadow: 0px 0px 0px 0px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
   }
-
+  .side-button.left {
+    left: -15px;
+  }
+   .side-button.right {
+    right: -15px;
+  }
   .dual-section {
     flex-direction: column;
   }
@@ -484,7 +502,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    position: relative;
+    position: sticky;
   }
 
 .nav-links {
@@ -557,9 +575,9 @@ body {
     padding: 40px 20px;
   }
 
-  .side-button.left,
-  .side-button.right {
-    display: none;
+
+    .projects-wrapper {
+    display: flex;
   }
 }
 
@@ -597,6 +615,7 @@ body {
   .navbar {
     display: flex;
     padding: 15px 20px;
+    position: sticky;
   }
   .nav-links {
     position: absolute;

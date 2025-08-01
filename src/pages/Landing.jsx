@@ -53,20 +53,32 @@ const projects = [
 const Landing = () => {
   const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const projectsPerView = 2;
+  const [projectsPerView, setProjectsPerView] = useState(window.innerWidth <= 768 ? 1 : 2);
   const maxIndex = Math.max(0, projects.length - projectsPerView);
   const [isManual, setIsManual] = useState(false);
   const intervalRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    if (!isManual) {
+    const isMobile = window.innerWidth <= 768;
+
+    if (!isManual && !isMobile) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
       }, 5000);
     }
+
     return () => clearInterval(intervalRef.current);
   }, [isManual, maxIndex]);
+
+    useEffect(() => {
+    const handleResize = () => {
+      setProjectsPerView(window.innerWidth <= 768 ? 1 : 2);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleNext = () => {
     clearInterval(intervalRef.current);
@@ -95,8 +107,9 @@ const Landing = () => {
   };
 
   const trackTranslate = {
-    transform: `translateX(-${(currentIndex * 100) / projectsPerView}%)`,
+  transform: `translateX(-${(currentIndex * 100) / projectsPerView}%)`,
   };
+
 
 
   return (
