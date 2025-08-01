@@ -503,6 +503,7 @@ body {
     align-items: center;
     padding: 15px 20px;
     position: sticky;
+    margin-top: -10px;
   }
 
 .nav-links {
@@ -645,6 +646,10 @@ body {
 
   .nav-links a {
     font-size: 1rem;
+  }
+
+  .section {
+    margin-top: -20px;
   }
 }
 
